@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lab1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-vI-G7d">
+                                <rect key="frame" x="15" y="59" width="384" height="778"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="rV6-Bw-UQY">
+                                        <rect key="frame" x="60" y="101" width="264" height="42"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAZ-mz-Nln">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="ABOUT"/>
+                                                <connections>
+                                                    <action selector="chooseAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9wB-cW-tji"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wB-OM-dSW">
+                                                <rect key="frame" x="133" y="0.0" width="131" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="SHOWINGS"/>
+                                                <connections>
+                                                    <action selector="chooseAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mD-Eo-o6G"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="DHm-bF-akU"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnimeMeme" translatesAutoresizingMaskIntoConstraints="NO" id="s1l-69-Hrj">
+                                        <rect key="frame" x="20" y="168" width="344" height="345"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="345" id="f3W-Vu-jmg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2D-nH-AX8">
+                                        <rect key="frame" x="20" y="513" width="344" height="245"/>
+                                        <string key="text">Welcome to CU Anime Club, a home for all otakus. We watch anime, play games, and socialize with fellow anime enthusiasts. Games include anything from trivias, tournaments, scavenger hunts, etc, and are conducted every other meeting (biweekly). There are no strict requirements or commitments for this club. We're very casual. Just come to enjoy a good time!</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="CU Anime Club" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-Bi-sGf">
+                                        <rect key="frame" x="52" y="28" width="280" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="7EV-Fg-DUD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rV6-Bw-UQY" firstAttribute="top" secondItem="2ww-Bi-sGf" secondAttribute="bottom" constant="25" id="1Jg-5i-C6g"/>
+                                    <constraint firstItem="2ww-Bi-sGf" firstAttribute="centerX" secondItem="NvA-vI-G7d" secondAttribute="centerX" id="3Ph-Tc-ZpY"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="2ww-Bi-sGf" secondAttribute="bottom" constant="711" id="5dx-xF-M7v"/>
+                                    <constraint firstItem="2ww-Bi-sGf" firstAttribute="centerX" secondItem="u2D-nH-AX8" secondAttribute="centerX" id="F3u-bj-mWa"/>
+                                    <constraint firstItem="u2D-nH-AX8" firstAttribute="leading" secondItem="NvA-vI-G7d" secondAttribute="leading" constant="20" id="Fns-ME-GcZ"/>
+                                    <constraint firstItem="5cK-N0-zWj" firstAttribute="bottom" secondItem="u2D-nH-AX8" secondAttribute="bottom" constant="20" id="La8-gv-9iD"/>
+                                    <constraint firstAttribute="trailing" secondItem="s1l-69-Hrj" secondAttribute="trailing" constant="20" id="Yg7-sQ-M2C"/>
+                                    <constraint firstItem="2ww-Bi-sGf" firstAttribute="centerX" secondItem="s1l-69-Hrj" secondAttribute="centerX" id="ZyM-51-zrv"/>
+                                    <constraint firstItem="5cK-N0-zWj" firstAttribute="bottom" secondItem="u2D-nH-AX8" secondAttribute="bottom" constant="20" id="cKI-J2-aSG"/>
+                                    <constraint firstItem="2ww-Bi-sGf" firstAttribute="top" secondItem="NvA-vI-G7d" secondAttribute="topMargin" constant="20" id="ccp-Xs-l84"/>
+                                    <constraint firstItem="s1l-69-Hrj" firstAttribute="leading" secondItem="5cK-N0-zWj" secondAttribute="leading" constant="20" id="hKr-Mh-uYI"/>
+                                    <constraint firstItem="s1l-69-Hrj" firstAttribute="top" secondItem="rV6-Bw-UQY" secondAttribute="bottom" constant="25" id="hl5-8M-doV"/>
+                                    <constraint firstItem="2ww-Bi-sGf" firstAttribute="centerX" secondItem="rV6-Bw-UQY" secondAttribute="centerX" id="iXg-JN-EVx"/>
+                                    <constraint firstItem="u2D-nH-AX8" firstAttribute="top" secondItem="s1l-69-Hrj" secondAttribute="bottom" id="iYc-eF-Lmr"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ikS-j2-t01"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="5cK-N0-zWj"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NvA-vI-G7d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8tb-3N-8ar"/>
+                            <constraint firstItem="NvA-vI-G7d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CQ7-BF-2ID"/>
+                            <constraint firstItem="NvA-vI-G7d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="D7Y-Hc-Zr3"/>
+                            <constraint firstItem="NvA-vI-G7d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="vuv-Pm-BfI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayImage" destination="s1l-69-Hrj" id="kz6-rY-MXg"/>
+                        <outlet property="displayText" destination="u2D-nH-AX8" id="xrO-Am-CWR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1.4492753623188408" y="72.991071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AnimeMeme" width="900" height="900"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
