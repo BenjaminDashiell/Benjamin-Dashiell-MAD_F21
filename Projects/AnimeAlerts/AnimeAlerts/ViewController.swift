@@ -30,8 +30,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let viewCell = tableView.dequeueReusableCell(withIdentifier: "AnimeViewCell", for: indexPath) as! AnimeViewCell
         viewCell.animeTitle.text = extractData[indexPath.row].title
         viewCell.dateTime.text = extractData[indexPath.row].date+" @ "+extractData[indexPath.row].time
-        viewCell.backgroundView = UIImageView(image: UIImage(named: "testbg")!)
+        viewCell.backgroundView = UIImageView(image: UIImage(named: extractData[indexPath.row].image)!)
         return viewCell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //forcing table view cell height to a specifc value
+        return 100
+    }
+    
 }
 
