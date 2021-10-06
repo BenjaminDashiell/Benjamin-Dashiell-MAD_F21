@@ -9,8 +9,9 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //variables
     @IBOutlet var tableView: UITableView!
-    let getData = animeDatabase.singleInstance
+    var getData = animeDatabase.singleInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(nib, forCellReuseIdentifier: "AnimeViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     //UITableView functions (required)
@@ -31,12 +31,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewCell.animeTitle.text = extractData[indexPath.row].title
         viewCell.dateTime.text = extractData[indexPath.row].date+" @ "+extractData[indexPath.row].time
         viewCell.backgroundView = UIImageView(image: UIImage(named: extractData[indexPath.row].image)!)
+        viewCell.alarmOnOff.setOn(extractData[indexPath.row].alarmStatus, animated: false)
         return viewCell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //forcing table view cell height to a specifc value
         return 100
     }
     
+    //Segues
+    @IBAction func unwindSegue(_ segue:UIStoryboardSegue){
+        //print("new table count is : ", getData.getDB().count)
+        tableView.reloadData() //property allows for tableView to autorefresh
+    }
 }
 

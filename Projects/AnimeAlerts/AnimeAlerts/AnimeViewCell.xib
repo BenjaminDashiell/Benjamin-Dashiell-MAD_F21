@@ -62,6 +62,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="alarmOnOff" destination="alw-U9-X2O" id="gde-o4-rpm"/>
                 <outlet property="animeTitle" destination="zzY-fI-Ni1" id="YFG-Id-vIz"/>
                 <outlet property="dateTime" destination="w1L-GQ-pje" id="OGB-Y6-Mk6"/>
             </connections>

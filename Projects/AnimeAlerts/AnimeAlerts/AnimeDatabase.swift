@@ -39,7 +39,7 @@ final class animeDatabase{
         //initialize var animeDB with hardcoded Anime Objects
         animeDB.append(Anime(animeTitle: "Scarlet Nexus",animeImage: "testbg",animeDate: "7-1-21",animeTime: "7:30 AM",currentAlertStatus: false))
         animeDB.append(Anime(animeTitle: "Love Live! Superstar!!",animeImage: "testbg",animeDate: "7-11-21",animeTime: "12:00 PM",currentAlertStatus: false))
-        animeDB.append(Anime(animeTitle: "Pirate Princess",animeImage: "testbg",animeDate: "8-14-21",animeTime: "10:00 PM",currentAlertStatus: false))
+        animeDB.append(Anime(animeTitle: "Pirate Princess",animeImage: "testbg",animeDate: "8-14-21",animeTime: "10:00 PM",currentAlertStatus: true))
         animeDB.append(Anime(animeTitle: "86 2nd Season",animeImage: "testbg",animeDate: "10-3-21",animeTime: "10:00 PM",currentAlertStatus: false))
         animeDB.append(Anime(animeTitle: "Komi-San",animeImage: "testbg",animeDate: "10-6-21",animeTime: "9:00 AM",currentAlertStatus: false))
         animeDB.append(Anime(animeTitle: "World Trigger 3rd Season",animeImage: "testbg",animeDate: "10-10-21",animeTime: "10:00 PM",currentAlertStatus: false))

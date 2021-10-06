@@ -11,6 +11,7 @@ class AnimeViewCell: UITableViewCell {
 
     @IBOutlet weak var animeTitle: UILabel!
     @IBOutlet weak var dateTime: UILabel!
+    @IBOutlet weak var alarmOnOff: UISwitch!
     @IBAction func alarmSwitch(_ sender: UISwitch) {
         //does nothing currently since can't do push notifactions
     }
