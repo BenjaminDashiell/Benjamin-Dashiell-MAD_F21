@@ -13,17 +13,21 @@ class AnimeViewCell: UITableViewCell {
     @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var alarmOnOff: UISwitch!
     @IBAction func alarmSwitch(_ sender: UISwitch) {
-        //does nothing currently since can't do push notifactions
+        let adb = animeDatabase.singleInstance
+        //print("before updated")
+        //print(adb.printDB())
+        var alertBool = false
+        if(alarmOnOff.isOn){
+            alertBool = true
+        }
+        else{
+            alertBool = false
+        }
+        adb.updateAnimeAlert(animeName: (animeTitle.text)!, boolStatus: alertBool)
+        //print("after updated")
+        //print(adb.printDB())
     }
-    
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSi-J5-2Gd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                 <items>
                                     <barButtonItem title="Cancel" id="pXv-RL-xWi">
                                         <connections>
@@ -77,7 +77,7 @@
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-wx-DgI">
-                                <rect key="frame" x="47" y="138.5" width="320" height="565"/>
+                                <rect key="frame" x="0.0" y="34" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VFx-1W-7Pj">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
@@ -91,6 +91,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XvE-5z-KzY">
                                                 <rect key="frame" x="0.0" y="34" width="300" height="34"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="LWG-ei-Xnj"/>
                                                     <constraint firstAttribute="width" constant="300" id="mUh-F5-6Wc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -98,8 +99,8 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fc0-8z-blo">
-                                        <rect key="frame" x="0.0" y="118" width="300" height="68"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fc0-8z-blo">
+                                        <rect key="frame" x="0.0" y="118" width="300" height="277"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20R-U3-74B">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
@@ -111,14 +112,29 @@
                                                 <rect key="frame" x="0.0" y="34" width="300" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="Zya-d9-dmH"/>
+                                                    <constraint firstAttribute="height" constant="34" id="xgE-LW-MgJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill.badge.ellipsis" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-oW-ZF0">
+                                                <rect key="frame" x="0.0" y="79" width="302" height="99.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="350" id="iT0-Eg-UPk"/>
+                                                    <constraint firstAttribute="height" constant="100" id="rSE-HB-44y"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoQ-Dl-j7q">
+                                                <rect key="frame" x="0.0" y="188" width="300" height="89"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="selectImage:" destination="ekI-zC-3wW" eventType="touchUpInside" id="XGV-CJ-YCT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bKJ-dr-duf">
-                                        <rect key="frame" x="0.0" y="236" width="320" height="248"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bKJ-dr-duf">
+                                        <rect key="frame" x="0.0" y="445" width="320" height="248"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="485-tz-dXg">
                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="24"/>
@@ -126,14 +142,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="MJD-UN-lF6">
+                                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="MJD-UN-lF6">
                                                 <rect key="frame" x="0.0" y="32" width="320" height="216"/>
                                                 <locale key="locale" localeIdentifier="en_US"/>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="225" translatesAutoresizingMaskIntoConstraints="NO" id="XDO-CQ-aRf">
-                                        <rect key="frame" x="0.0" y="534" width="316" height="31"/>
+                                        <rect key="frame" x="0.0" y="743" width="316" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7W-H2-hBP">
                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="31"/>
@@ -152,10 +168,14 @@
                         <viewLayoutGuide key="safeArea" id="d3s-Gr-TKb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="d3s-Gr-TKb" firstAttribute="trailing" secondItem="EBW-wx-DgI" secondAttribute="trailing" id="1LN-iQ-Eaj"/>
+                            <constraint firstItem="EBW-wx-DgI" firstAttribute="centerX" secondItem="cwt-ev-s4n" secondAttribute="centerX" id="1gJ-bX-hxF"/>
+                            <constraint firstItem="EBW-wx-DgI" firstAttribute="top" secondItem="OSi-J5-2Gd" secondAttribute="bottom" id="3dd-l8-lUR"/>
                             <constraint firstItem="OSi-J5-2Gd" firstAttribute="leading" secondItem="d3s-Gr-TKb" secondAttribute="leading" id="OoE-Wn-Iro"/>
-                            <constraint firstItem="EBW-wx-DgI" firstAttribute="centerY" secondItem="cwt-ev-s4n" secondAttribute="centerY" id="U6Y-oL-BhA"/>
-                            <constraint firstItem="EBW-wx-DgI" firstAttribute="centerX" secondItem="cwt-ev-s4n" secondAttribute="centerX" id="e6e-y7-8QR"/>
+                            <constraint firstItem="d3s-Gr-TKb" firstAttribute="bottom" secondItem="EBW-wx-DgI" secondAttribute="bottom" id="PH7-nX-fJM"/>
+                            <constraint firstItem="EBW-wx-DgI" firstAttribute="leading" secondItem="d3s-Gr-TKb" secondAttribute="leading" id="kfP-La-CIP"/>
                             <constraint firstItem="OSi-J5-2Gd" firstAttribute="top" secondItem="d3s-Gr-TKb" secondAttribute="top" id="o8e-Mh-Ob3"/>
+                            <constraint firstItem="EBW-wx-DgI" firstAttribute="centerY" secondItem="cwt-ev-s4n" secondAttribute="centerY" id="xou-cZ-sCo"/>
                             <constraint firstItem="OSi-J5-2Gd" firstAttribute="trailing" secondItem="d3s-Gr-TKb" secondAttribute="trailing" id="yAp-4z-3oh"/>
                         </constraints>
                     </view>
@@ -165,6 +185,7 @@
                         <outlet property="userAnimeImage" destination="k1w-bi-BFL" id="j26-7I-FKp"/>
                         <outlet property="userAnimeTitle" destination="XvE-5z-KzY" id="Dhf-e2-PtZ"/>
                         <outlet property="userDateTime" destination="MJD-UN-lF6" id="S6p-j0-sDz"/>
+                        <outlet property="userImageSelect" destination="tGv-oW-ZF0" id="qTL-Hi-tU2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyM-bf-jJl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -174,6 +195,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.fill.badge.ellipsis" catalog="system" width="128" height="92"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

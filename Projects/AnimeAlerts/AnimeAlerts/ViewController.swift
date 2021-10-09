@@ -30,7 +30,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let viewCell = tableView.dequeueReusableCell(withIdentifier: "AnimeViewCell", for: indexPath) as! AnimeViewCell
         viewCell.animeTitle.text = extractData[indexPath.row].title
         viewCell.dateTime.text = extractData[indexPath.row].date+" @ "+extractData[indexPath.row].time
-        viewCell.backgroundView = UIImageView(image: UIImage(named: extractData[indexPath.row].image)!)
+        
+        viewCell.backgroundView = extractData[indexPath.row].uiimage
+        viewCell.backgroundView?.alpha = 0.5
+        //viewCell.backgroundView?.contentMode = .center
+        //viewCell.backgroundView?.contentMode = .scaleAspectFill
+        
         viewCell.alarmOnOff.setOn(extractData[indexPath.row].alarmStatus, animated: false)
         return viewCell
     }
@@ -38,6 +43,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //forcing table view cell height to a specifc value
         return 100
+    }
+    
+    //crop
+    func cropImage(image: UIImage, rect: CGRect, scale: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: rect.size.width / scale, height: rect.size.height / scale), true, 0.0)
+        image.draw(at: CGPoint(x: -rect.origin.x / scale, y: -rect.origin.y / scale))
+        let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return croppedImage
     }
     
     //Segues
