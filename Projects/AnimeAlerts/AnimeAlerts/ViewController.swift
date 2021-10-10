@@ -9,16 +9,16 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //variables
+    //Variables
     @IBOutlet var tableView: UITableView!
     var getData = animeDatabase.singleInstance
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         let nib = UINib(nibName:"AnimeViewCell", bundle:nil)
         tableView.register(nib, forCellReuseIdentifier: "AnimeViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        super.viewDidLoad()
     }
     
     //UITableView functions (required)
@@ -28,30 +28,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let extractData = getData.getDB()
         let viewCell = tableView.dequeueReusableCell(withIdentifier: "AnimeViewCell", for: indexPath) as! AnimeViewCell
-        viewCell.animeTitle.text = extractData[indexPath.row].title
-        viewCell.dateTime.text = extractData[indexPath.row].date+" @ "+extractData[indexPath.row].time
-        
+        viewCell.animeTitle.text = "    "+extractData[indexPath.row].title
+        viewCell.dateTime.text = "    "+extractData[indexPath.row].date+" @ "+extractData[indexPath.row].time
         viewCell.backgroundView = extractData[indexPath.row].uiimage
-        viewCell.backgroundView?.alpha = 0.5
-        //viewCell.backgroundView?.contentMode = .center
-        //viewCell.backgroundView?.contentMode = .scaleAspectFill
-        
+        viewCell.backgroundView?.alpha = 0.3
         viewCell.alarmOnOff.setOn(extractData[indexPath.row].alarmStatus, animated: false)
         return viewCell
     }
-    
+    //Forcing UITableView cell height to a specifc value
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //forcing table view cell height to a specifc value
         return 100
-    }
-    
-    //crop
-    func cropImage(image: UIImage, rect: CGRect, scale: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: rect.size.width / scale, height: rect.size.height / scale), true, 0.0)
-        image.draw(at: CGPoint(x: -rect.origin.x / scale, y: -rect.origin.y / scale))
-        let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return croppedImage
     }
     
     //Segues
@@ -60,4 +46,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData() //property allows for tableView to autorefresh
     }
 }
-
