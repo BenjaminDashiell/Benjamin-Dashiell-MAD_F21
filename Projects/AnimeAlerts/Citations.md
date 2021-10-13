@@ -22,5 +22,8 @@ Reference for singleton implementation:
 * [Singleton Creation Explained - Swift, iOS](
 https://youtu.be/gsQ2_mENDpA)
 
+Reference for splitting a string:
+* https://sarunw.com/posts/how-to-split-string-into-array-of-substrings-in-swift/
+
 For Text Fields & Date Picker:
 * Beginning iPhone Development with Swift 5
