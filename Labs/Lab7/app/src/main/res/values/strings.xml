@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lab7</string>
+    <string name="title">Order A Sandwich</string>
+    <string name="main1">Chicken</string>
+    <string name="main2">Veggie</string>
+    <string name="topping1">Cheese</string>
+    <string name="topping2">Tomato</string>
+    <string name="topping3">Lettuce</string>
+    <string name="option1">Gluten-Free</string>
+    <string name="buttonName1">Create Order</string>
+
+    <!--for spinner-->
+    <string-array name="location">
+        <item>Panera Bread</item>
+        <item>Chick-Fil-A</item>
+        <item>Peckish</item>
+    </string-array>
+</resources>

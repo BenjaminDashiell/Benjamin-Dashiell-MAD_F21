@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TaceTuesday</string>
+    <string name="heading">Taco Tuesday</string>
+    <string name="tacoOption1">chicken</string>
+    <string name="tacoOption2">steak</string>
+    <string name="tacoOption3">veggie</string>
+    <string name="userButton">Create Taco</string>
+    <string name="checkBox1">Guac</string>
+    <string name="checkBox2">Salsa</string>
+    <string name="checkBox3">Cheese</string>
+    <string name="checkBox4">sourcream</string>
+    <string name="gluten_free">gluten-free</string>
+    <!--for spinner-->
+    <string-array name="location">
+        <item>the Hill</item> <item>29th St.</item> <item>Pearl St.</item>
+    </string-array>
+</resources>
