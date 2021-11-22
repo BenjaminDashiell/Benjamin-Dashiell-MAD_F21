@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Lab8</string>
+    <string name="title">Order A Sandwich</string>
+    <string name="main1">Chicken</string>
+    <string name="main2">Veggie</string>
+    <string name="topping1">Cheese</string>
+    <string name="topping2">Tomato</string>
+    <string name="topping3">Lettuce</string>
+    <string name="option1">Gluten-Free</string>
+    <string name="buttonName1">Create Order</string>
+
+    <!--for spinner-->
+    <string-array name="location">
+        <item>Panera Bread</item>
+        <item>Chick-Fil-A</item>
+        <item>Peckish</item>
+    </string-array>
+
+    <!-- Strings used for fragments for navigation, which are needed if I don't want crashing -_- -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- For Second Activity -->
+    <string name="title_activity_sandwich">Sandwich</string>
+    <string name="feedbackHint">Give Feedback</string>
+    <string name="buttonName2">Give Feedback</string>
+</resources>
