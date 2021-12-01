@@ -26,6 +26,11 @@
         <item name="android:colorBackground">@color/secondaryLightColor</item>
     </style>
 
+    <style name="Theme.FastFood.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="Theme.Lab8.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

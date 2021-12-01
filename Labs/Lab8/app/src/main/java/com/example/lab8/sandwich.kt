@@ -1,6 +1,7 @@
 package com.example.lab8
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -51,18 +52,26 @@ class Sandwich : AppCompatActivity() {
     }
 
     private fun loadWebSite() {
-        //create implict intent
-        var newIntent = Intent()
-        newIntent.action = Intent.ACTION_VIEW
-        newIntent.data = ShopUrl?.let { Uri.parse(ShopUrl) }
+        // reference code (doesn't work with API 30)
+        // create implict intent
+//        var newIntent = Intent()
+//        newIntent.action = Intent.ACTION_VIEW
+//        newIntent.data = ShopUrl?.let { Uri.parse(ShopUrl) }
+//
+//        // Verify that the intent will resolve to an activity
+//        if (newIntent.resolveActivity(packageManager) != null) {
+//            // start activity
+//            startActivity(newIntent)
+//        } else {
+//            //message
+//            Log.i("error", "Website wasn't loaded")
+//        }
 
-        // Verify that the intent will resolve to an activity
-        if (newIntent.resolveActivity(packageManager) != null) {
-            // start activity
-            startActivity(newIntent)
-        } else {
-            //message
-            Log.i("error", "Website wasn't loaded")
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(ShopUrl))
+        try{
+            startActivity(intent)
+        }catch (e: ActivityNotFoundException){
+            Log.i("error", "Website is not loading")
         }
     }
 }

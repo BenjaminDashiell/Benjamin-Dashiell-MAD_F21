@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private var selectedLocation = 0
     private val REQUEST_CODE = 1
     lateinit var saveText: TextView
+    lateinit var saveText2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         switch = findViewById(R.id.switch1)
         locationButton = findViewById(R.id.locationButton)
         reviewTextView = findViewById(R.id.reviewTextView)
+        saveText2 = reviewTextView
 
         //event listener for intent
         locationButton.setOnClickListener {
@@ -122,11 +124,13 @@ class MainActivity : AppCompatActivity() {
         updateUI() //kept crashing when rotate and no options selected yet, so set message=saveText even if there is no displayed text
         super.onSaveInstanceState(outState)
         outState.putString("message", saveText.text as String?)
+        outState.putString("message2", saveText2.text as String?)
         super.onSaveInstanceState(outState)
     }
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         messageTextView.text = savedInstanceState.getString("message", "")
+        reviewTextView.text = savedInstanceState.getString("message2", "")
         updateUI()
     }
 }

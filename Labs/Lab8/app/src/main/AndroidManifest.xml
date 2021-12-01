@@ -13,7 +13,7 @@
             android:name=".Sandwich"
             android:exported="false"
             android:label="@string/title_activity_sandwich"
-            android:theme="@style/Theme.Lab8.NoActionBar" />
+            android:theme="@style/Theme.FastFood.NoActionBar" />
 
         <activity
             android:name=".MainActivity"
