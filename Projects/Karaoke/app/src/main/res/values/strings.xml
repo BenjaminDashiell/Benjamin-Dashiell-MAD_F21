@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">karaoke</string>
+    <string name="label1">Search Song</string>
+    <string name="userTextInput">enter song title</string>
+    <string name="label2">Results</string>
+    <string name="button1">Add To Queue</string>
+    <string name="label3">Queue</string>
+    <string name="button2">Select To Delete</string>
+    <string name="button3">Confirm</string>
+</resources>
