@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">karaoke</string>
     <string name="label1">Search Song</string>
-    <string name="userTextInput">enter song title</string>
+    <string name="userTextInput">Enter Song Info</string>
     <string name="label2">Results</string>
     <string name="button1">Add To Queue</string>
     <string name="label3">Queue</string>
     <string name="button2">Remove From Queue</string>
-<!--    <string name="button3">Remove From Queue</string>-->
-<!--    <string name="done">done</string>-->
-    <string name="switchLabel">Unlock Delete</string>
+    <string name="switchLabel">Unlock</string>
 </resources>

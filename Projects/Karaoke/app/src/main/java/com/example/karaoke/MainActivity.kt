@@ -2,7 +2,6 @@ package com.example.karaoke
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
 import android.widget.*
 
@@ -10,7 +9,6 @@ class MainActivity : AppCompatActivity(){
     //for karaoke data
     private val karaokeDB = songDB() //access our karaoke list
     private var karaokeArray: Array<Song> = karaokeDB.getDB().toTypedArray()
-    //private lateinit var adapter: ArrayAdapter<Song>
     private lateinit var resultsAdapter: ArrayAdapter<String>
     private lateinit var queueAdapter: ArrayAdapter<String>
     private lateinit var queueAdapter2: ArrayAdapter<String>
@@ -20,8 +18,6 @@ class MainActivity : AppCompatActivity(){
     private lateinit var queueList: ListView
     private lateinit var songInput: TextView
     private lateinit var switchListViewType: Switch
-    lateinit var saveResults: Parcelable
-    lateinit var saveQueue: Parcelable
 
     //Mutable Lists
     private var displayResults: MutableList<String> = mutableListOf()
@@ -36,92 +32,128 @@ class MainActivity : AppCompatActivity(){
         queueList = findViewById(R.id.queueList)
         songInput = findViewById(R.id.songInput)
         switchListViewType = findViewById(R.id.switchListViewType)
-        saveResults = resultsList.onSaveInstanceState()!!
-        saveQueue = queueList.onSaveInstanceState()!!
+
+        resultsAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, displayResults)
+        resultsList.adapter = resultsAdapter
+        queueAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, displayQueue)
+        queueAdapter2 = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, displayQueue)
     }
 
     fun findSong(view: View){
         displayResults.clear() //to refresh it between searches
-
+        var foundFlag = false
         val checkInput = (songInput.text).toString()
-        for (song in karaokeArray){
-            //check if user's input is a song title, author, or ID
-            if(song.songTitle == checkInput || song.songAuthor == checkInput || song.songID == checkInput){
-                //add the song to the displayResults as a checkbox
+
+        if(checkInput.isEmpty()){
+            Toast.makeText(this,"Please input a song",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            for (song in karaokeArray){
+                //check if user's input is a song title, author, or ID
+                if(song.songTitle == checkInput || song.songAuthor == checkInput || song.songID == checkInput){
+                    //add the song to the displayResults as a checkbox
                     val passString = "${song.songTitle} by ${song.songAuthor} \nID: ${song.songID}"
                     displayResults.add(passString)
+                    foundFlag = true
                     updateResults(view)
+                }
+            }
+            if(!foundFlag){
+                Toast.makeText(this,"There is no ${checkInput} in our database!",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun updateResults(view: View){
         //show entries of displayResults to the user
-
-        resultsAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, displayResults)
-        resultsList.adapter = resultsAdapter
+        resultsAdapter.notifyDataSetChanged();
     }
 
     fun addToQueue(view: View){
         //for loop through resultsList
-        //var testOutput = ""
-        for(i in 0..resultsList.getCount()){
-            if(resultsList.isItemChecked(i)){
-                //If any checkbox is selected
-                //testOutput += resultsList.getItemAtPosition(i).toString()
-                displayQueue.add(resultsList.getItemAtPosition(i).toString())
-            }
+        val size = resultsList.getCount()
+        val checkedItemsCount = resultsList.checkedItemCount
+        if(size <= 0 || checkedItemsCount <= 0){
+            Toast.makeText(this,"There were 0 items that could be added to the Queue",Toast.LENGTH_SHORT).show()
         }
-        //Toast.makeText(this,testOutput,Toast.LENGTH_SHORT).show()
-        updateQueue(view)
+        else{
+            for(i in 0..size){
+                if(resultsList.isItemChecked(i)){
+                    //If any checkbox is selected
+                    //testOutput += resultsList.getItemAtPosition(i).toString()
+                    displayQueue.add(resultsList.getItemAtPosition(i).toString())
+                }
+            }
+            //Toast.makeText(this,testOutput,Toast.LENGTH_SHORT).show()
+            updateQueue()
+        }
     }
 
-    private fun updateQueue(view: View){
+    private fun updateQueue(){
         //show entries of displayQueue to the user as text
-        queueAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, displayQueue)
-        queueList.adapter = queueAdapter
+
+        //Solution to not being able to select the checkboxes:
+        // set choiceMode to Multiple Choice. None/empty makes it unable to select from
+
+        if(switchListViewType.isChecked){
+            queueList.adapter = queueAdapter2
+            queueAdapter2.notifyDataSetChanged()
+            switchListViewType.text = " Lock "
+            //Toast.makeText(this,"switch is on",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            queueList.adapter = queueAdapter
+            queueAdapter.notifyDataSetChanged()
+            switchListViewType.text = "Unlock"
+            //Toast.makeText(this,"switch is off",Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun selectFromQueue(view: View){
         //show entries of displayQueue (checkboxes)
-        //Solution is not being able to select the checkboxes (set choiceMode to Multiple Choice. None/empty makes it unable to select from)
-        if(switchListViewType.isChecked){
-            queueAdapter2 = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, displayQueue)
-            queueList.adapter = queueAdapter2
-            //Toast.makeText(this,"switch is on",Toast.LENGTH_SHORT).show()
-        }
-        else{
-            updateQueue(view)
-            //Toast.makeText(this,"switch is off",Toast.LENGTH_SHORT).show()
-        }
+        updateQueue()
         //Toast.makeText(this,"switch is pressed",Toast.LENGTH_SHORT).show()
     }
 
     fun removeFromQueue(view: View){
         //for loop through displayQueue
-        for(i in 0..queueList.getCount()){
-            if(queueList.isItemChecked(i)){
-                //If any checkbox is selected
-                //Toast.makeText(this, queueList.getItemAtPosition(i).toString(),Toast.LENGTH_SHORT).show()
-                displayQueue.remove(queueList.getItemAtPosition(i).toString())
-            }
+        val size = queueList.getCount()
+        val checkedItemsCount = queueList.checkedItemCount
+        if(size <= 0 || checkedItemsCount <= 0){
+            Toast.makeText(this,"There were 0 items that could be removed from the Queue",Toast.LENGTH_SHORT).show()
         }
-        selectFromQueue(view)
+        else {
+            for (i in 0..size) {
+                if (queueList.isItemChecked(i)) {
+                    //If any checkbox is selected
+                    //Toast.makeText(this, queueList.getItemAtPosition(i).toString(),Toast.LENGTH_SHORT).show()
+                    displayQueue.remove(queueList.getItemAtPosition(i).toString())
+                }
+            }
+            selectFromQueue(view)
+        }
     }
 
     //save state for rotation
     //only need to save the ListViews
     override fun onSaveInstanceState(outState: Bundle) {
+        //println("App Crashes At Save State")
         super.onSaveInstanceState(outState)
-        outState.putParcelable("saveState1", resultsList.onSaveInstanceState())
-        outState.putParcelable("saveState2", queueList.onSaveInstanceState())
-        super.onSaveInstanceState(outState)
+        val displayResultsArray: ArrayList<String> = displayResults.toCollection(ArrayList())
+        val displayQueueArray: ArrayList<String> = displayQueue.toCollection(ArrayList())
+        outState.putSerializable("saveState1", displayResultsArray)
+        outState.putSerializable("saveState2", displayQueueArray)
     }
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        //println("App Crashes At Restoring A State")
         super.onRestoreInstanceState(savedInstanceState)
-        val state1 = savedInstanceState.getParcelable<Parcelable>("saveState1")
-        val state2 = savedInstanceState.getParcelable<Parcelable>("saveState2")
-        resultsList.onRestoreInstanceState(state1);
-        queueList.onRestoreInstanceState(state2);
+
+        this.displayResults.clear()
+        this.displayResults.addAll(savedInstanceState.getSerializable("saveState1") as MutableList<String>)
+        this.resultsAdapter.notifyDataSetChanged()
+
+        this.displayQueue.clear()
+        this.displayQueue.addAll(savedInstanceState.getSerializable("saveState2") as MutableList<String>)
+        updateQueue()
     }
 }
